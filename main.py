@@ -51,6 +51,24 @@ def sort_bowtiedata2(filename):
             dict_of_nucleotide_positions[outerkey][innerkey] += 1
     return dict_of_nucleotide_positions
 
+def count_nucleotides(filename):
+    "Takes a txt file from a bowtie output with alignment position+sequence, returns a dict of dicts with nucleotide position as outer key, nucleotide as inner key and number of nucleotides counted as value"
+    dict_of_nucleotide_positions = {}
+    input_file = open(filename)
+    lines = input_file.readlines()
+    for line in lines:
+        elements = re.split("\s", line)  #splits alignment position from mutations
+        alignment_position = elements[0]
+        sequence = elements[1]
+        for nucleotide in enumerate(sequence):
+            position = int(alignment_position)+nucleotide[0]
+            if position not in dict_of_nucleotide_positions:
+                dict_of_mutations = {"A": 0, "T": 0, "C": 0, "G": 0}
+                dict_of_nucleotide_positions[position] = dict_of_mutations  # Adds a dict with the nucleotide position as key
+            outerkey = position
+            innerkey = nucleotide[1]
+            dict_of_nucleotide_positions[outerkey][innerkey] += 1
+    return dict_of_nucleotide_positions
 
 def plot_mutations_vs_position(dict_of_dicts):
     "takes a dict of dicts and plots alignment position vs number of mutations"
