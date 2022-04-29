@@ -5,3 +5,9 @@ import main
 
 test2 = main.count_nucleotides("Bowtie_data_coordinate+sequence.txt")
 print(test2)
+
+test_calculator = main.calculate_mutations((test2))
+print(test_calculator)
+
+test_calculator2 = main.calculate_substitutions(test2)
+print(test_calculator2)

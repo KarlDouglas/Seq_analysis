@@ -70,6 +70,39 @@ def count_nucleotides(filename):
             dict_of_nucleotide_positions[outerkey][innerkey] += 1
     return dict_of_nucleotide_positions
 
+def calculate_mutations(dict):
+    "docstring"
+    dict_of_mutation_percentages = {}
+    items = dict.items()
+    for item in items:
+        position = item[0]
+        dict_of_nucleotides = item[1]
+        list = dict_of_nucleotides.values()
+        wt = max(list)
+        mutations = sum(list)-wt
+        mutation_percentage = [mutations/sum(list)]
+        if position not in dict_of_mutation_percentages:
+            dict_of_mutation_percentages[position] = mutation_percentage
+    return dict_of_mutation_percentages
+
+def calculate_substitutions(dict):
+    "docstring"
+    dict_of_substitution_frequencies = {}
+    for key, value in dict.items():
+        position = key
+        list = value.values()
+        wt = max(list)
+        mutations = sum(list) - wt
+        for nucleotide, number in value.items():
+            substitution_frequency = number/sum(list)
+            if position not in dict_of_substitution_frequencies:
+                dict_of_substitutions = {"A": 0, "T": 0, "C": 0, "G": 0}
+                dict_of_substitution_frequencies[position] = dict_of_substitutions  # Adds a dict with the nucleotide position as key
+            outerkey = position
+            innerkey = nucleotide
+            dict_of_substitution_frequencies[outerkey][innerkey] += substitution_frequency
+    return dict_of_substitution_frequencies
+
 def plot_mutations_vs_position(dict_of_dicts):
     "takes a dict of dicts and plots alignment position vs number of mutations"
     matplotlib.pyplot.scatter(dict_of_dicts)
