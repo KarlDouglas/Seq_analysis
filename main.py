@@ -2,7 +2,7 @@
 #from Bio import SeqIo
 import re
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 # Amplicon seq output: Paired end fastaQ file format
 # merge paired end reads for longer reads
 
@@ -103,9 +103,14 @@ def calculate_substitutions(dict):
             dict_of_substitution_frequencies[outerkey][innerkey] += substitution_frequency
     return dict_of_substitution_frequencies
 
-def plot_mutations_vs_position(dict_of_dicts):
+def plot_mutations_vs_position(dict_of_mutation_percentages):
     "takes a dict of dicts and plots alignment position vs number of mutations"
-    matplotlib.pyplot.scatter(dict_of_dicts)
+    lists = sorted(dict_of_mutation_percentages.items())
+    x, y = zip(*lists)
+
+    plt.plot(x,y)
+    plot = plt.show()
+    return plot
 
 #def plot_subtitution_frequency(dict_of_dicts)
 
