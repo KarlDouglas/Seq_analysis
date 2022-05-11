@@ -103,7 +103,7 @@ def calculate_substitutions(dict):
             dict_of_substitution_frequencies[outerkey][innerkey] += substitution_frequency
     return dict_of_substitution_frequencies
 
-def plot_mutation_base_proberbility(dict):
+def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
     "Docstring"
     dict_of_wt = {"A": 0, "T": 0, "C": 0, "G": 0}
     A = { "T": 0, "C": 0, "G": 0}
@@ -134,28 +134,40 @@ def plot_mutation_base_proberbility(dict):
             G["A"] += substitution[0]
             G["T"] += substitution[1]
             G["C"] += substitution[2]
-    A1 = sum(A.values())
-    x = ["A","T","C","G"]
-    A_val = list(A.values())
-    A_val.insert(0,0)
-    T_val = list(T.values())
-    T_val.insert(1, 0)
-    C_val = list(C.values())
-    C_val.insert(2, 0)
-    G_val = list(G.values())
-    G_val.insert(3, 0)
-    bottom1 = np.add(A_val, T_val).tolist()
-    bottom2 = np.add(bottom1, C_val).tolist()
-    plt.bar(x, A_val)
-    plt.bar(x, T_val, bottom=A_val)
-    plt.bar(x, C_val, bottom=bottom1)
-    plt.bar(x, G_val, bottom=bottom2)
-    #y = [sum(A.values())/dict_of_wt["A"],sum(T.values())/dict_of_wt["T"],sum(C.values())/dict_of_wt["C"],sum(G.values())/dict_of_wt["G"]] # height of bar is number of substitutions divided by number of wt bases counted
-    #plt.bar(x,y, color=["green","red","orange","blue"])
-    #plt.bar()
-    #plt.ylabel("substitution frequency")
+    x1 = ["A","T","C","G"]
+    AX = ["T","C","G"]
+    TX = ["A","C","G"]
+    CX = ["A","G","T"]
+    GX = ["A","T","C"]
+    y1 = [sum(A.values())/dict_of_wt["A"],sum(T.values())/dict_of_wt["T"],sum(C.values())/dict_of_wt["C"],sum(G.values())/dict_of_wt["G"]] # height of bar is number of substitutions divided by number of wt bases counted
+    lists = sorted(dict_of_mutation_percentages.items())
+    x, y = zip(*lists)
+    #plt.scatter(x, y)
+    #plt.xlabel("Base position")
+    #plt.ylabel("mutational frequency")
+
+    ax = plt.subplot2grid((2, 2), (0, 0))
+    ax1 = plt.subplot2grid((3, 3), (0, 0), colspan=3)
+    ax2 = plt.subplot2grid((3, 3), (1, 2), rowspan=2)
+    ax3 = plt.subplot2grid((3, 3), (1, 0))
+    ax4 = plt.subplot2grid((3, 3), (1, 1))
+    ax5 = plt.subplot2grid((3, 3), (2, 0))
+    ax6 = plt.subplot2grid((3, 3), (2, 1))
+    ax1.scatter(x, y)
+    ax1.set_title('Mutation Distribution')
+    ax2.bar(x1, y1)
+    ax2.set_title('Substitution Distribution')
+    ax3.bar(AX, A.values())
+    ax3.set_title('A')
+    ax4.bar(TX, T.values(),color="green")
+    ax4.set_title('T')
+    ax5.bar(CX, C.values(),color="orange")
+    ax5.set_title('C')
+    ax6.bar(GX, G.values(),color="red")
+    ax6.set_title('G')
+    plt.tight_layout()
     plt.show()
-    return None
+    return
 
 def plot_mutations_vs_position(dict_of_mutation_percentages):
     "takes a dict of dicts and plots alignment position vs number of mutations"
