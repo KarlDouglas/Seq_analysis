@@ -163,12 +163,6 @@ def plot_mutations_vs_position(dict_of_mutation_percentages):
     plot = plt.show()
     return plot
 
-#why does it not return A?
-
-#plot 4 bars with each base representing each WT base that has been mutated. Eg. 40% of the mutated bases being a G
-#Plot within each base 3 bars of the possible substitutions that represent the frequency.
-
-
 def demultiplex_seqreads(filename, adapter):
     "sorts seqreads by barcode"
     seq = adapter
