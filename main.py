@@ -17,7 +17,7 @@ def count_bowtiedata_mutations(filename):
     input_file = open(filename)
     lines = input_file.readlines()
     for line in lines:
-        elements = re.split("\s|:|>",line)
+        elements = re.split("\t|:|>",line)
         alignment_position = elements[0]
         seqread_mutation_position = elements[1]
         position = int(alignment_position)+int(seqread_mutation_position)
@@ -142,10 +142,6 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
     y1 = [sum(A.values())/dict_of_wt["A"],sum(T.values())/dict_of_wt["T"],sum(C.values())/dict_of_wt["C"],sum(G.values())/dict_of_wt["G"]] # height of bar is number of substitutions divided by number of wt bases counted
     lists = sorted(dict_of_mutation_percentages.items())
     x, y = zip(*lists)
-    #plt.scatter(x, y)
-    #plt.xlabel("Base position")
-    #plt.ylabel("mutational frequency")
-
     ax = plt.subplot2grid((2, 2), (0, 0))
     ax1 = plt.subplot2grid((3, 3), (0, 0), colspan=3)
     ax2 = plt.subplot2grid((3, 3), (1, 2), rowspan=2)
@@ -156,7 +152,7 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
     ax1.scatter(x, y)
     ax1.set_title('Mutation Distribution')
     ax2.bar(x1, y1)
-    ax2.set_title('Substitution Distribution')
+    ax2.set_title('%WT mutated')
     ax3.bar(AX, A.values())
     ax3.set_title('A')
     ax4.bar(TX, T.values(),color="green")
