@@ -1,16 +1,5 @@
-#import numpy as np
-#from Bio import SeqIo
 import re
 import matplotlib.pyplot as plt
-import numpy as np
-# Amplicon seq output: Paired end fastaQ file format
-# merge paired end reads for longer reads
-
-# bowtie - filter out bad scoring reads
-# demultiplexing the reads
-
-# make a dict of dicts, first key position, second key nucleotide, containing a number or mutations found
-# Use regular expression to find the position and append the mutationdef sort_bowtiedata(filename):
 def count_bowtiedata_mutations(filename):
     "Takes a txt file from a bowtie output, returns a dict of dicts with nucleotide position as outer key, nucleotide as inner key and number of mutations as value"
     dict_of_nucleotide_positions = {}
@@ -28,7 +17,6 @@ def count_bowtiedata_mutations(filename):
         innerkey = elements[3]
         dict_of_nucleotide_positions[outerkey][innerkey] += 1
     return dict_of_nucleotide_positions
-#Delete first version?
 
 def count_bowtiedata_mutations2(filename):
     "Takes a txt file from a bowtie output with alignment position as first element and mutaions listed as second element, returns a dict of dicts with nucleotide position as outer key, nucleotide as inner key and number of mutations as value"
@@ -162,8 +150,8 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
     ax6.bar(GX, G.values(),color="red")
     ax6.set_title('G')
     plt.tight_layout()
-    plt.show()
-    return
+    plot = plt.show()
+    return plot
 
 def plot_mutations_vs_position(dict_of_mutation_percentages):
     "takes a dict of dicts and plots alignment position vs number of mutations"
@@ -192,10 +180,3 @@ def merge_paired_end_reads(filename1,filename2):
     F_reads = filename1.open()
     R_reads = filename2.open()
     return
-
-
-
-
-#def plot_subtitution_frequency(dict_of_dicts)
-
-
