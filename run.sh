@@ -32,5 +32,8 @@ mv BC4.map Seq_analysis
 mv BC5.map Seq_analysis
 mv BC6.map Seq_analysis
 mv BC7.map Seq_analysis
+mv BC8.map Seq_analysis
+mv BC9.map Seq_analysis
+mv BC10.map Seq_analysis
 cd Seq_analysis
 python testrun.py
