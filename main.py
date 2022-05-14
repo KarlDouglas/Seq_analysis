@@ -151,7 +151,7 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
     ax6.set_title('G')
     plt.tight_layout()
     plot = plt.show()
-    return plot
+    return
 
 def plot_mutations_vs_position(dict_of_mutation_percentages):
     "takes a dict of dicts and plots alignment position vs number of mutations"
@@ -162,15 +162,3 @@ def plot_mutations_vs_position(dict_of_mutation_percentages):
     plt.ylabel("mutational frequency")
     plot = plt.show()
     return plot
-
-def demultiplex_seqreads(filename, adapter):
-    "sorts seqreads by barcode"
-    seq = adapter
-    lines = filename.readlines()
-    return lines
-
-def merge_paired_end_reads(filename1,filename2):
-    "takes two files and merges pared end reads from seq"
-    F_reads = filename1.open()
-    R_reads = filename2.open()
-    return
