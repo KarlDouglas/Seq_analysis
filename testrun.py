@@ -1,20 +1,27 @@
 import main
 
-#test1 = main.count_bowtiedata_mutations2("Bowtie_data_coordinate+mutation.txt")
-#print(test1)
+BC1 = main.count_nucleotides("BC1.map")
+BC2 = main.count_nucleotides("BC2.map")
+BC3 = main.count_nucleotides("BC3.map")
+BC4 = main.count_nucleotides("BC4.map")
+BC5 = main.count_nucleotides("BC5.map")
+BC6 = main.count_nucleotides("BC6.map")
+BC7 = main.count_nucleotides("BC7.map")
 
-test2 = main.count_nucleotides("test.map")
-print(test2)
+BC1_mutations = main.calculate_mutations((BC1))
+BC2_mutations = main.calculate_mutations((BC2))
+BC3_mutations = main.calculate_mutations((BC3))
+BC4_mutations = main.calculate_mutations((BC4))
+BC5_mutations = main.calculate_mutations((BC5))
+BC6_mutations = main.calculate_mutations((BC6))
+BC7_mutations = main.calculate_mutations((BC7))
 
-test_calculator = main.calculate_mutations((test2))
-print(test_calculator)
+BC1_plot = main.plot_mutation_base_proberbility(BC1, BC1_mutations)
+BC2_plot = main.plot_mutation_base_proberbility(BC2, BC2_mutations)
+BC3_plot = main.plot_mutation_base_proberbility(BC3, BC3_mutations)
+BC4_plot = main.plot_mutation_base_proberbility(BC4, BC5_mutations)
+BC5_plot = main.plot_mutation_base_proberbility(BC5, BC5_mutations)
+BC6_plot = main.plot_mutation_base_proberbility(BC6, BC6_mutations)
+BC7_plot = main.plot_mutation_base_proberbility(BC7, BC7_mutations)
 
-test_calculator2 = main.calculate_substitutions(test2)
-#print(test_calculator2)
-
-#test_plot = main.plot_mutations_vs_position(test_calculator)
-
-test_plot2 = main.plot_mutation_base_proberbility(test2, test_calculator)
-print(test_plot2)
-
-#test_demultiplex = main.demultiplex_seqreads("test_data2.fastaq", "GACTAGCTACGTCAGTTCAAGTCC")
+print(BC1_plot)
