@@ -18,6 +18,7 @@ def count_bowtiedata_mutations(filename):
         dict_of_nucleotide_positions[outerkey][innerkey] += 1
     return dict_of_nucleotide_positions
 
+
 def count_bowtiedata_mutations2(filename):
     "Takes a txt file from a bowtie output with alignment position as first element and mutaions listed as second element, returns a dict of dicts with nucleotide position as outer key, nucleotide as inner key and number of mutations as value"
     dict_of_nucleotide_positions = {}
@@ -150,7 +151,7 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
     ax6.bar(GX, G.values(),color="red")
     ax6.set_title('G')
     plt.tight_layout()
-    plot = plt.show()
+    plot = plt.savefig("plot.png")
     return
 
 def plot_mutations_vs_position(dict_of_mutation_percentages):
@@ -160,5 +161,5 @@ def plot_mutations_vs_position(dict_of_mutation_percentages):
     plt.scatter(x,y)
     plt.xlabel("Base position")
     plt.ylabel("mutational frequency")
-    plot = plt.show()
+    plot = plt.savefig()
     return plot
