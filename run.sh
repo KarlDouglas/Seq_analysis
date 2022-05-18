@@ -3,8 +3,8 @@ conda config --add channels defaults
 conda config --add channels bioconda
 conda install cutadapt
 y
-cutadapt -g file:barcodes.fasta -o {name}.F.fastq F_seq.fastq
-cutadapt -g file:barcodes.fasta -o {name}.R.fastq R_seq.fastq
+cutadapt -g file:barcodes.fasta -o {name}.F.fastq CY001_F.fastq
+cutadapt -g file:barcodes.fasta -o {name}.R.fastq CY001_R.fastq
 /home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC1.F.fastq -2 BC1.R.fastq -o BC1.merged.fastq
 /home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC2.F.fastq -2 BC2.R.fastq -o BC2.merged.fastq
 /home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC3.F.fastq -2 BC3.R.fastq -o BC3.merged.fastq

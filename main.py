@@ -151,7 +151,6 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
     ax6.bar(GX, G.values(),color="red")
     ax6.set_title('G')
     plt.tight_layout()
-    plot = plt.savefig("plot.png")
     return
 
 def plot_mutations_vs_position(dict_of_mutation_percentages):
