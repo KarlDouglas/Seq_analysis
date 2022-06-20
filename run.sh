@@ -5,6 +5,16 @@ conda install cutadapt
 y
 cutadapt -g file:barcodes.fasta -o {name}.F.fastq CY001_F.fastq
 cutadapt -g file:barcodes.fasta -o {name}.R.fastq CY001_R.fastq
+fastq_pair BC1.F.fastq BC1.R.fastq
+fastq_pair BC1.F.fastq BC2.R.fastq
+fastq_pair BC1.F.fastq BC3.R.fastq
+fastq_pair BC1.F.fastq BC4.R.fastq
+fastq_pair BC1.F.fastq BC5.R.fastq
+fastq_pair BC1.F.fastq BC6.R.fastq
+fastq_pair BC1.F.fastq BC7.R.fastq
+fastq_pair BC1.F.fastq BC8.R.fastq
+fastq_pair BC1.F.fastq BC9.R.fastq
+fastq_pair BC1.F.fastq BC10.R.fastq
 /home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC1.F.fastq.paired.fq -2 BC1.R.fastq.paired.fq -o BC1.merged.fastq
 /home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC2.F.fastq.paired.fq -2 BC2.R.fastq.paired.fq -o BC2.merged.fastq
 /home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC3.F.fastq.paired.fq -2 BC3.R.fastq.paired.fq -o BC3.merged.fastq
