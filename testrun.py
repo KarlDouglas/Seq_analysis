@@ -1,8 +1,6 @@
 import main
 import matplotlib.pyplot as plt
 
-
-
 BC1 = main.count_nucleotides("BC1.map")
 BC2 = main.count_nucleotides("BC2.map")
 BC3 = main.count_nucleotides("BC3.map")
