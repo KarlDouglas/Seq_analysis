@@ -1,6 +1,8 @@
 import main
 import matplotlib.pyplot as plt
 
+
+
 BC1 = main.count_nucleotides("BC1.map")
 BC2 = main.count_nucleotides("BC2.map")
 BC3 = main.count_nucleotides("BC3.map")
@@ -41,7 +43,7 @@ BC7_plot = main.plot_mutation_base_proberbility(BC7, BC7_mutations)
 plt.savefig("BC7.png")
 BC8_plot = main.plot_mutation_base_proberbility(BC8, BC8_mutations)
 plt.savefig("BC8.png")
-BC8_F_plot = main.plot_mutation_base_proberbility(BC8.F, BC8_F_mutations)
+BC8_F_plot = main.plot_mutation_base_proberbility(BC8_F, BC8_F_mutations)
 plt.savefig("BC8.F.png")
 BC9_plot = main.plot_mutation_base_proberbility(BC9, BC9_mutations)
 plt.savefig("BC9.png")
