@@ -5,6 +5,7 @@ conda install -c bioconda/label/cf201901 cutadapt
 
 cutadapt -b file:barcodes.fasta -o {name}.F.fastq CY001_FDDP220175289-1a_HMMLFDRXY_L1_1.fq
 cutadapt -b file:barcodes.fasta -o {name}.R.fastq CY001_FDDP220175289-1a_HMMLFDRXY_L1_2.fq
+
 fastq_pair BC1.F.fastq BC1.R.fastq
 fastq_pair BC2.F.fastq BC2.R.fastq
 fastq_pair BC3.F.fastq BC3.R.fastq
