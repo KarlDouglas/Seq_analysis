@@ -1,10 +1,10 @@
 import re
 import matplotlib.pyplot as plt
 
-def count_nucleotides(m_reads, f_reads, r_reads):
+def count_nucleotides(m_reads):
     "Takes a txt file from a bowtie output with alignment position followed by the sequence seperated by a blank space, returns a dict of dicts with nucleotide position as outer key, nucleotide as inner key and number of nucleotides counted as value"
     dict_of_nucleotide_positions = {}
-    input_file = open(m_reads, f_reads, r_reads)
+    input_file = open(m_reads)
     lines = input_file.readlines()
     for line in lines:
         elements = re.split("\s", line)  #splits alignment position from mutations
