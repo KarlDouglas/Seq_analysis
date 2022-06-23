@@ -1,10 +1,20 @@
 import re
 import matplotlib.pyplot as plt
 
-def count_nucleotides(m_reads):
+def merge_txt_files(file1, file2, file3, name):
+    "..."
+    filenames = file1, file2, file3
+    with open(name, "w") as outfile:
+        for filename in filenames:
+            with open(filename) as infile:
+                contents = infile.read()
+                outfile.write(contents)
+    return name
+
+def count_nucleotides(f_reads):
     "Takes a txt file from a bowtie output with alignment position followed by the sequence seperated by a blank space, returns a dict of dicts with nucleotide position as outer key, nucleotide as inner key and number of nucleotides counted as value"
     dict_of_nucleotide_positions = {}
-    input_file = open(m_reads)
+    input_file = open(f_reads)
     lines = input_file.readlines()
     for line in lines:
         elements = re.split("\s", line)  #splits alignment position from mutations
