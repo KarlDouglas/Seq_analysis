@@ -1,7 +1,7 @@
 import main
 import matplotlib.pyplot as plt
 
-BC1 = main.count_nucleotides("BC1.F.map")
+BC1 = main.count_nucleotides("BC1.R.map")
 
 BC1_mutations = main.calculate_mutations((BC1))
 
