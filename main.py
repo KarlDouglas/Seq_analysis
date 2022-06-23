@@ -6,11 +6,11 @@ def count_nucleotides(m_reads):
     dict_of_nucleotide_positions = {}
     input_file = open(m_reads)
     lines = input_file.readlines()
-    for line in lines[50:]:
+    for line in lines:
         elements = re.split("\s", line)  #splits alignment position from mutations
         alignment_position = elements[0]
         sequence = elements[1]
-        for nucleotide in enumerate(sequence): #enumerate to keep track of the alignment position
+        for nucleotide in enumerate(sequence[5:-5]): #enumerate to keep track of the alignment position
             position = int(alignment_position)+nucleotide[0]
             if position not in dict_of_nucleotide_positions:
                 dict_of_mutations = {"A": 0, "T": 0, "C": 0, "G": 0, "N":0}
