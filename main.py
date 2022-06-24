@@ -11,7 +11,7 @@ def merge_txt_files(file1, file2, file3, name):
                 outfile.write(contents)
     return name
 
-def count_depth(file)
+def count_depth(file):
     "text"
     input_file = open(file)
     depth = input_file.readline()
