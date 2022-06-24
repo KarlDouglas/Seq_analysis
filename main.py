@@ -11,6 +11,12 @@ def merge_txt_files(file1, file2, file3, name):
                 outfile.write(contents)
     return name
 
+def count_depth(file)
+    "text"
+    input_file = open(file)
+    depth = input_file.readline()
+    return len(depth)
+
 def count_nucleotides(f_reads):
     "Takes a txt file from a bowtie output with alignment position followed by the sequence seperated by a blank space, returns a dict of dicts with nucleotide position as outer key, nucleotide as inner key and number of nucleotides counted as value"
     dict_of_nucleotide_positions = {}
