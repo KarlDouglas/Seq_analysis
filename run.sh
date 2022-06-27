@@ -17,16 +17,16 @@ fastq_pair BC8.F.fastq BC8.R.fastq
 fastq_pair BC9.F.fastq BC9.R.fastq
 fastq_pair BC10.F.fastq BC10.R.fastq
 
-/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC1.F.fastq -2 BC1.R.fastq -o BC1.merged.fastq
-/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC2.F.fastq -2 BC2.R.fastq -o BC2.merged.fastq
-/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC3.F.fastq -2 BC3.R.fastq -o BC3.merged.fastq
-/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC4.F.fastq -2 BC4.R.fastq -o BC4.merged.fastq
-/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC5.F.fastq -2 BC5.R.fastq -o BC5.merged.fastq
-/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC6.F.fastq -2 BC6.R.fastq -o BC6.merged.fastq
-/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC7.F.fastq -2 BC7.R.fastq -o BC7.merged.fastq
-/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC8.F.fastq -2 BC8.R.fastq -o BC8.merged.fastq
-/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC9.F.fastq -2 BC9.R.fastq -o BC9.merged.fastq
-/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC10.F.fastq -2 BC10.R.fastq -o BC10.merged.fastq
+/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC1.F.fastq.paired.fq -2 BC1.R.fastq.paired.fq -o BC1.merged.fastq
+/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC2.F.fastq.paired.fq -2 BC2.R.fastq.paired.fq -o BC2.merged.fastq
+/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC3.F.fastq.paired.fq -2 BC3.R.fastq.paired.fq -o BC3.merged.fastq
+/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC4.F.fastq.paired.fq -2 BC4.R.fastq.paired.fq -o BC4.merged.fastq
+/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC5.F.fastq.paired.fq -2 BC5.R.fastq.paired.fq -o BC5.merged.fastq
+/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC6.F.fastq.paired.fq -2 BC6.R.fastq.paired.fq -o BC6.merged.fastq
+/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC7.F.fastq.paired.fq -2 BC7.R.fastq.paired.fq -o BC7.merged.fastq
+/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC8.F.fastq.paired.fq -2 BC8.R.fastq.paired.fq -o BC8.merged.fastq
+/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC9.F.fastq.paired.fq -2 BC9.R.fastq.paired.fq -o BC9.merged.fastq
+/home/ptc872_alumni_ku_dk/modi_mount/NGmerge/NGmerge -1 BC10.F.fastq.paired.fq -2 BC10.R.fastq.paired.fq -o BC10.merged.fastq
 
 /home/ptc872_alumni_ku_dk/modi_mount/bowtie/bowtie  /home/ptc872_alumni_ku_dk/modi_mount/bowtie/indexes/Leu2i  --suppress 1,2,3,6,7,8,9 BC1.merged.fastq > BC1.M.map
 /home/ptc872_alumni_ku_dk/modi_mount/bowtie/bowtie  /home/ptc872_alumni_ku_dk/modi_mount/bowtie/indexes/Leu2i  --suppress 1,2,3,6,7,8,9 BC1.F.fastq.single.fq > BC1.F.map

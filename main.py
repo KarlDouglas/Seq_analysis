@@ -14,7 +14,7 @@ def merge_txt_files(file1, file2, file3, name):
 def count_depth(file):
     "text"
     input_file = open(file)
-    depth = input_file.readline()
+    depth = input_file.readlines()
     return len(depth)
 
 def count_nucleotides(f_reads):
@@ -82,6 +82,12 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
             G["A"] += substitution[0]
             G["T"] += substitution[1]
             G["C"] += substitution[2]
+        if "N" ==wt:
+            substitution = list(value.values())
+            G["A"] += substitution[0]
+            G["T"] += substitution[1]
+            G["C"] += substitution[2]
+            C["G"] += substitution[3]
     x1 = ["A","T","C","G"]
     AX = ["T","C","G"]
     TX = ["A","C","G"]
