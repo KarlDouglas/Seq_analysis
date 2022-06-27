@@ -99,7 +99,7 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
     ax4 = plt.subplot2grid((3, 3), (1, 2))
     ax5 = plt.subplot2grid((3, 3), (2, 1))
     ax6 = plt.subplot2grid((3, 3), (2, 2))
-    ax1.scatter(x, y, s=4, color = "blue")
+    ax1.scatter(x, y, s=4, color = "black")
     ax1.set_title('Mutation Distribution')
     ax2.bar(x1, y1, color = ["blue","green","orange","red"])
     ax2.set_title('%WT mutated')
