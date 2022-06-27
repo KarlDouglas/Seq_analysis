@@ -53,7 +53,7 @@ def calculate_mutations(dict):
 
 def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
     "Docstring"
-    dict_of_wt = {"A": 0, "T": 0, "C": 0, "G": 0}
+    dict_of_wt = {"A": 0, "T": 0, "C": 0, "G": 0, "N": 0}
     A = { "T": 0, "C": 0, "G": 0}
     T = {"A": 0, "C": 0, "G": 0}
     G = {"T": 0, "C": 0, "A": 0}
@@ -82,12 +82,8 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
             G["A"] += substitution[0]
             G["T"] += substitution[1]
             G["C"] += substitution[2]
-        if "N" ==wt:
-            substitution = list(value.values())
-            G["A"] += substitution[0]
-            G["T"] += substitution[1]
-            G["C"] += substitution[2]
-            C["G"] += substitution[3]
+        if "N" == wt:
+            None
     x1 = ["A","T","C","G"]
     AX = ["T","C","G"]
     TX = ["A","C","G"]
