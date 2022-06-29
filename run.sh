@@ -9,8 +9,8 @@ conda install -c bioconda/label/cf201901 fastx_toolkit
 
 fastq_masker -q 25 -r N -i CY001_FDDP220175289-1a_HMMLFDRXY_L1_1.fq -o masked1.fq
 fastq_masker -q 25 -r N -i CY001_FDDP220175289-1a_HMMLFDRXY_L1_2.fq -o masked2.fq
-cutadapt -b file:barcodes.fasta -o {name}.F.masked.fq
-cutadapt -b file:barcodes.fasta -o {name}.R.masked.fq
+cutadapt -b file:barcodes.fasta -o {name}.F.masked1.fq
+cutadapt -b file:barcodes.fasta -o {name}.R.masked2.fq
 
 fastq_pair BC1.F.fastq BC1.R.fastq
 fastq_pair BC2.F.fastq BC2.R.fastq
