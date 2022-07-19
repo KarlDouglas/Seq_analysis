@@ -26,17 +26,20 @@ def count_nucleotides(f_reads):
         elements = re.split("\s", line)  #splits alignment position from mutations
         alignment_position = elements[0]
         sequence = elements[1]
-        for nucleotide in enumerate(sequence[5:-5]): #enumerate to keep track of the alignment position
+        for nucleotide in enumerate(sequence): #enumerate to keep track of the alignment position
             position = int(alignment_position)+nucleotide[0]
             if position not in dict_of_nucleotide_positions:
                 dict_of_mutations = {"A": 0, "T": 0, "C": 0, "G": 0, "N":0}
                 dict_of_nucleotide_positions[position] = dict_of_mutations  # Adds a dict with the nucleotide position as key
             outerkey = position
             innerkey = nucleotide[1]
-            dict_of_nucleotide_positions[outerkey][innerkey] += 1
+            if innerkey == "N":
+                dict_of_nucleotide_positions[outerkey][innerkey] += 0
+            else:
+                dict_of_nucleotide_positions[outerkey][innerkey] += 1
     return dict_of_nucleotide_positions
 
-def calculate_mutations(dict):
+def calculate_mutations(dict, depth):
     "docstring"
     dict_of_mutation_percentages = {}
     items = dict.items()
@@ -45,11 +48,25 @@ def calculate_mutations(dict):
         dict_of_nucleotides = item[1]
         list_of_nucleotides = dict_of_nucleotides.values()
         wt = max(list_of_nucleotides)
-        mutations = sum(list_of_nucleotides)-wt-dict_of_nucleotides["N"]
+        mutations = sum(list_of_nucleotides)-wt
         mutation_percentage = [mutations/sum(list_of_nucleotides)]
-        if position not in dict_of_mutation_percentages:
+        if wt > 0.1*depth and position not in dict_of_mutation_percentages:
             dict_of_mutation_percentages[position] = mutation_percentage
     return dict_of_mutation_percentages
+
+def total_mutations(dict):
+    "docstring"
+    items = dict.items()
+    list_of_mutations = []
+    list_of_wt = []
+    for item in items:
+        dict_of_nucleotides = item[1]
+        list_of_nucleotides = dict_of_nucleotides.values()
+        wt = max(list_of_nucleotides)
+        mutation = sum(list_of_nucleotides)-wt
+        list_of_wt.append(wt)
+        list_of_mutations.append(mutation)
+    return sum(list_of_wt), sum(list_of_mutations), sum(list_of_mutations)/sum(list_of_wt)
 
 def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
     "Docstring"
@@ -82,8 +99,6 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
             G["A"] += substitution[0]
             G["T"] += substitution[1]
             G["C"] += substitution[2]
-        if "N" == wt:
-            None
     x1 = ["A","T","C","G"]
     AX = ["T","C","G"]
     TX = ["A","C","G"]
