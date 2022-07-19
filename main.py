@@ -68,7 +68,14 @@ def total_mutations(dict):
         list_of_mutations.append(mutation)
     return sum(list_of_wt), sum(list_of_mutations), sum(list_of_mutations)/sum(list_of_wt)
 
-def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
+def plot_mutation_distribution(dict_of_mutation_percentages):
+    "Docstring"
+    lists = sorted(dict_of_mutation_percentages.items())
+    x, y = zip(*lists)
+    plt.scatter(x, y, s=4, color="black")
+    return
+
+def plot_substitution_base_proberbility(dict):
     "Docstring"
     dict_of_wt = {"A": 0, "T": 0, "C": 0, "G": 0, "N": 0}
     A = { "T": 0, "C": 0, "G": 0}
@@ -99,36 +106,64 @@ def plot_mutation_base_proberbility(dict, dict_of_mutation_percentages):
             G["A"] += substitution[0]
             G["T"] += substitution[1]
             G["C"] += substitution[2]
-    x1 = ["A","T","C","G"]
     AX = ["T","C","G"]
     TX = ["A","C","G"]
     CX = ["A","G","T"]
     GX = ["A","T","C"]
-    y1 = [sum(A.values())/dict_of_wt["A"],sum(T.values())/dict_of_wt["T"],sum(C.values())/dict_of_wt["C"],sum(G.values())/dict_of_wt["G"]] # height of bar is number of substitutions divided by number of wt bases counted
-    lists = sorted(dict_of_mutation_percentages.items())
-    x, y = zip(*lists)
-    ax = plt.subplot2grid((2, 2), (0, 0))
-    ax1 = plt.subplot2grid((3, 3), (0, 0), colspan=3)
-    ax2 = plt.subplot2grid((3, 3), (1, 0), rowspan=2)
-    ax3 = plt.subplot2grid((3, 3), (1, 1))
-    ax4 = plt.subplot2grid((3, 3), (1, 2))
-    ax5 = plt.subplot2grid((3, 3), (2, 1))
-    ax6 = plt.subplot2grid((3, 3), (2, 2))
-    ax1.scatter(x, y, s=4, color = "black")
-    ax1.set_title('Mutation Distribution')
-    ax2.bar(x1, y1, color = ["blue","green","orange","red"])
-    ax2.set_title('%WT mutated')
+    ax1 = plt.subplot2grid((2, 2), (0, 0))
+    ax2 = plt.subplot2grid((2, 2), (0, 1))
+    ax3 = plt.subplot2grid((2, 2), (1, 0))
+    ax4 = plt.subplot2grid((2, 2), (1, 1))
     A = {k: v / total for total in (sum(A.values()),) for k, v in A.items()}
     T = {k: v / total for total in (sum(T.values()),) for k, v in T.items()}
     C = {k: v / total for total in (sum(C.values()),) for k, v in C.items()}
     G = {k: v / total for total in (sum(G.values()),) for k, v in G.items()}
-    ax3.bar(AX, A.values(), color = ["blue"])
-    ax3.set_title('A')
-    ax4.bar(TX, T.values(),color="green")
-    ax4.set_title('T')
-    ax5.bar(CX, C.values(),color="orange")
-    ax5.set_title('C')
-    ax6.bar(GX, G.values(),color="red")
-    ax6.set_title('G')
+    ax1.bar(AX, A.values(), color = ["blue"])
+    ax1.set_title('A')
+    ax2.bar(TX, T.values(),color="green")
+    ax2.set_title('T')
+    ax3.bar(CX, C.values(),color="orange")
+    ax3.set_title('C')
+    ax4.bar(GX, G.values(),color="red")
+    ax4.set_title('G')
     plt.tight_layout()
     return
+
+def plot_mutation_base_proberbility(dict):
+        "Docstring"
+        dict_of_wt = {"A": 0, "T": 0, "C": 0, "G": 0, "N": 0}
+        A = {"T": 0, "C": 0, "G": 0}
+        T = {"A": 0, "C": 0, "G": 0}
+        G = {"T": 0, "C": 0, "A": 0}
+        C = {"T": 0, "A": 0, "G": 0}
+        for key, value in dict.items():
+            wt = max(value, key=value.get)
+            count = max(value.values())
+            dict_of_wt[wt] += count
+            if "A" == wt:
+                substitution = list(value.values())
+                A["T"] += substitution[1]
+                A["C"] += substitution[2]
+                A["G"] += substitution[3]
+            if "T" == wt:
+                substitution = list(value.values())
+                T["A"] += substitution[0]
+                T["C"] += substitution[2]
+                T["G"] += substitution[3]
+            if "C" == wt:
+                substitution = list(value.values())
+                C["A"] += substitution[0]
+                C["G"] += substitution[3]
+                C["T"] += substitution[1]
+            if "G" == wt:
+                substitution = list(value.values())
+                G["A"] += substitution[0]
+                G["T"] += substitution[1]
+                G["C"] += substitution[2]
+            if "N" == wt:
+                None
+        x1 = ["A", "T", "C", "G"]
+        y1 = [sum(A.values()) / dict_of_wt["A"], sum(T.values()) / dict_of_wt["T"], sum(C.values()) / dict_of_wt["C"],sum(G.values()) / dict_of_wt["G"]]  # height of bar is number of substitutions divided by number of wt bases counted
+        plt.bar(x1, y1, color=["blue", "green", "orange", "red"])
+        plt.tight_layout()
+        return
